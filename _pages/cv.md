@@ -9,51 +9,23 @@ redirect_from:
 
 {% include base_path %}
 
+The full version of my CV can be found [here](http://feitosa-daniel.github.io/files/Feitosa-CV-Public.pdf).
+
 Education
 ======
-* B.S. in GitHub, GitHub University, 2012
-* M.S. in Jekyll, GitHub University, 2014
-* Ph.D in Version Control Theory, GitHub University, 2018 (expected)
+* B.S. of Computer Science in the Institute of Mathematics and Computational Sciences of the University of São Paulo, with specialization in Software Engineering.
+* M.Sc. in the Institute of Mathematics and Computational Sciences of the University of São Paulo, within the Software Engineering group (LabES) and Mobile Robotics group (LRM).
+* Ph.D. in the Department of Computer Science of the University of Groningen, within the Software Engineering and Architecture group (SEARCH). Doctoral dissertation: Applying Patterns in Embedded Systems Design for Managing Quality Attributes and their Trade-offs 
 
 Work experience
 ======
-* Summer 2015: Research Assistant
-  * Github University
-  * Duties included: Tagging issues
-  * Supervisor: Professor Git
-
-* Fall 2015: Research Assistant
-  * Github University
-  * Duties included: Merging pull requests
-  * Supervisor: Professor Hub
-  
-Skills
-======
-* Skill 1
-* Skill 2
-  * Sub-skill 2.1
-  * Sub-skill 2.2
-  * Sub-skill 2.3
-* Skill 3
-
-Publications
-======
-  <ul>{% for post in site.publications %}
-    {% include archive-single-cv.html %}
-  {% endfor %}</ul>
-  
-Talks
-======
-  <ul>{% for post in site.talks %}
-    {% include archive-single-talk-cv.html %}
-  {% endfor %}</ul>
-  
-Teaching
-======
-  <ul>{% for post in site.teaching %}
-    {% include archive-single-cv.html %}
-  {% endfor %}</ul>
-  
-Service and leadership
-======
-* Currently signed in to 43 different slack teams
+| | |
+|-|-|
+| Mar. 2019 – present	  | Assistant Professor at Campus Fryslân - University of Groningen |
+| Mar. 2019 – present	  | Guest Researcher at the Faculty of Science and Engineering - University of Groningen |
+| Jun. 2018 – Feb. 2019 | Lecturer at Campus Fryslân - University of Groningen |
+| Dec. 2017 – Feb. 2019 | Researcher and Chief Data Scientist at Data Research Centre - University of Groningen |
+| May 2017 – Dec. 2017	| Researcher at the Faculty of Science and Engineering - University of Groningen |
+| Aug. 2012 – Jan. 2013 | Software Engineer at TQS Informática Ltda. |
+| Feb. 2007 – Jul. 2012 | Teaching Assistant in undergraduate courses at the University of São Paulo. |
+|                       | Research Assistant in national research projects. |
