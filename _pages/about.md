@@ -8,7 +8,7 @@ redirect_from:
   - /about.html
 ---
 
-Currently, an assistant professor in Campus Fryslân at the University of Groningen, member of the [Data Research Centre](https://www.rug.nl/cf/onderzoek-gscf/research/research-centres/dataresearchcentre/), led by [Anne Beaulieu](https://annebeaulieu.org/), and guest researcher at the [Software Engineering and Architecture](http://www.cs.rug.nl/search/Main/HomePage) group, led by [Paris Avgeriou](http://www.cs.rug.nl/~paris/).
+Currently, an assistant professor in the Faculty of Science and Engineering at the University of Groningen. Member of the [Software Engineering and Architecture](http://www.cs.rug.nl/search/Main/HomePage) group, led by [Paris Avgeriou](http://www.cs.rug.nl/~paris/).
 
 My research interests lie in software architecture and software quality and are commonly applied to HW/SW co-design, although I also address other software-intensive systems.
 I have initially focused on reference architectures and reusable components for mobile robot systems. Later, I delved into architectural and design problems.

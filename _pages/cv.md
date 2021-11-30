@@ -19,8 +19,9 @@ Education
 
 Work experience
 ------
-* Mar. 2019 – present: Assistant Professor at Campus Fryslân - University of Groningen
-* Mar. 2019 – present: Guest Researcher at the Faculty of Science and Engineering - University of Groningen
+* Nov. 2021 – preset: Assistant Professor at the Faculty of Science and Engineering - University of Groningen
+* Mar. 2019 – Sep. 2021: Assistant Professor at Campus Fryslân - University of Groningen
+* Mar. 2019 – Sep. 2021: Guest Researcher at the Faculty of Science and Engineering - University of Groningen
 * Jun. 2018 – Feb. 2019: Lecturer at Campus Fryslân - University of Groningen
 * Dec. 2017 – Feb. 2019: Researcher and Chief Data Scientist at Data Research Centre - University of Groningen
 * May 2017 – Dec. 2017: Researcher at the Faculty of Science and Engineering - University of Groningen
@@ -30,19 +31,30 @@ Work experience
 Service & Engagement
 ------
 Served (or serving) as:
-* Webchair of the 4th International Conference no Technical Debt (TechDebt 2021)
+* Co-Chair of the track Software Engineering and Debt Metaphors (SEaDeM) of the 2022 Euromicro Conference on Software Engineering and Advanced Applications (SEAA 2022)
+* Virtualization Chair of the 2022 International Conference on Software Analysis, Evolution and Reengineering (SANER 2022)
+* Co-Chair of the 5th Workshop on Machine Learning Techniques for Software Quality Evaluation (MaLTeSQuE ‘21)
+* Web Chair of the 4th International Conference no Technical Debt (TechDebt 2021)
 * Chair of the J1st Track of the 46th Euromicro Conference on Software Engineering and Advanced Applications (SEAA 2020)
 
 Reviewer for:
 * IEEE Access
+* IEEE Computer
+* IEEE Software
 * IEEE Transactions on Software Engineering (TSE)
 * IET Software
+* Information and Software Technology (IST)
+* International Journal of Network Management (NEM)
 * Journal of Computer Science and Technology (JCST)
 * Journal of Software: Evolution and Process (JSME)
 * Journal of Systems and Software (JSS)
 
 PC member of current of previous editions of:
+* ACM/SIGAPP Symposium on Applied Computing (SAC)
 * Euromicro Conference on Software Engineering and Advanced Applications (SEAA)
 * European Conference on Software Architecture (ECSA)
-* Machine Learning Techniques for Software Quality Evaluation Workshop (MaLTeSQuE)
-
+* IEEE International Conference on Software Architecture (ICSA)
+* SBC Brazilian Symposium on Software Engineering (SBES)
+* SBC Brazilian Symposium on Computing Applied to Health (SBCAS)
+* Workshop on Machine Learning Techniques for Software Quality Evaluation (MaLTeSQuE)
+* Workshop on Software Quality Assurance for Artificial Intelligence (SQA4AI)
