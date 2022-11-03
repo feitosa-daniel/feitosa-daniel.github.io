@@ -24,14 +24,16 @@ Work experience
 * Mar. 2019 – Sep. 2021: Guest Researcher at the Faculty of Science and Engineering - University of Groningen
 * Jun. 2018 – Feb. 2019: Lecturer at Campus Fryslân - University of Groningen
 * Dec. 2017 – Feb. 2019: Researcher and Chief Data Scientist at Data Research Centre - University of Groningen
-* May 2017 – Dec. 2017: Researcher at the Faculty of Science and Engineering - University of Groningen
+* May 2013 – Dec. 2017: Researcher at the Faculty of Science and Engineering - University of Groningen
 * Aug. 2012 – Jan. 2013: Software Engineer at TQS Informática Ltda.
 * Feb. 2007 – Jul. 2012: Teaching Assistant in undergraduate courses at the University of São Paulo. Research Assistant in national research projects.
 
 Service & Engagement
 ------
 Served (or serving) as:
-* Co-Chair of the track Software Engineering and Debt Metaphors (SEaDeM) of the 2022 Euromicro Conference on Software Engineering and Advanced Applications (SEAA 2022)
+* Co-Chair of the track Software Engineering and Debt Metaphors (SEaDeM) of the 49th Euromicro Conference on Software Engineering and Advanced Applications (SEAA 2023)
+* Co-Organizer of the 5th International Software Architecture PhD School (ISAPS 2023)
+* Co-Chair of the track Software Engineering and Debt Metaphors (SEaDeM) of the 48th Euromicro Conference on Software Engineering and Advanced Applications (SEAA 2022)
 * Virtualization Chair of the 2022 International Conference on Software Analysis, Evolution and Reengineering (SANER 2022)
 * Co-Chair of the 5th Workshop on Machine Learning Techniques for Software Quality Evaluation (MaLTeSQuE ‘21)
 * Web Chair of the 4th International Conference no Technical Debt (TechDebt 2021)
@@ -49,7 +51,7 @@ Reviewer for:
 * Journal of Software: Evolution and Process (JSME)
 * Journal of Systems and Software (JSS)
 
-PC member of current of previous editions of:
+PC member of current or previous editions of:
 * ACM/SIGAPP Symposium on Applied Computing (SAC)
 * Euromicro Conference on Software Engineering and Advanced Applications (SEAA)
 * European Conference on Software Architecture (ECSA)

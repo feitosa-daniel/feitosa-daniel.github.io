@@ -15,14 +15,21 @@ author_profile: true
   {% include archive-single.html %}
 {% endfor %} -->
 
+* Zakieh Alizadehsani, Daniel Feitosa, Theodoros Maikantis, Apostolos Ampatzoglou, Alexander Chatzigeorgiou, David Berrocal, Alfonso González Briones, Juan M. Corchado, Marcio Mateus, and Johannes Groenewold\.
+Service Classification through Machine Learning: Aiding in the Efficient Identification of Reusable Assets in Cloud Application Development\.
+In *Proceedings of the 48th Euromicro Conference on Software Engineering and Advanced Applications \(SEAA '22\)*, 247–254\. 2022\.
+* Jie Tan, Daniel Feitosa, and Paris Avgeriou\.
+Does it matter who pays back Technical Debt? An empirical study of self-fixed TD\.
+*Information and Software Technology*, 143\(15\):106738, 2022\.
+[doi:10\.1016/j\.infsof\.2021\.106738](https://doi.org/10.1016/j.infsof.2021.106738)\.  
+* Eko Rahmadian, Daniel Feitosa, and Andrej Zwitter\.
+A systematic literature review on the use of big data for sustainable tourism\.
+*Current Issues in Tourism*, 25\(11\):1711–1730 2022\.
+[doi:10\.1080/13683500\.2021\.1974358](https://doi.org/10.1080/13683500.2021.1974358)\.
 * Antonios Gkortzis, Daniel Feitosa, and Diomidis Spinellis\.
 Software reuse cuts both ways: an empirical analysis of its relationship with security vulnerabilities\.
 *Journal of Systems and Software*, 172:110653, 2021\.
 [doi:10\.1016/j\.jss\.2020\.110653](https://doi.org/10.1016/j.jss.2020.110653)\.  
-* Eko Rahmadian, Daniel Feitosa, and Andrej Zwitter\.
-A systematic literature review on the use of big data for sustainable tourism\.
-*Current Issues in Tourism*, 2021\.
-[doi:10\.1080/13683500\.2021\.1974358](https://doi.org/10.1080/13683500.2021.1974358)\.  
 * Jie Tan, Daniel Feitosa, and Paris Avgeriou\.
 Do practitioners intentionally repay their own technical debt and why?
 In *Proceedings of the 37th International Conference on Software Maintenance and Evolution \(ICSME '21\)*, 251–262\. 2021\.
