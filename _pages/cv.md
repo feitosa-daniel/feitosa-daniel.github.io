@@ -52,6 +52,8 @@ Reviewer for:
 * Journal of Systems and Software (JSS)
 
 PC member of current or previous editions of:
+* ACM/IEEE International Conference on Program Comprehension (ICPC)
+* ACM/IEEE International Symposium on Empirical Software Engineering and Measurement (ESEM)
 * ACM/SIGAPP Symposium on Applied Computing (SAC)
 * Euromicro Conference on Software Engineering and Advanced Applications (SEAA)
 * European Conference on Software Architecture (ECSA)
