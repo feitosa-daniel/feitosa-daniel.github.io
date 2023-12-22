@@ -15,9 +15,47 @@ author_profile: true
   {% include archive-single.html %}
 {% endfor %} -->
 
+* João Paulo Biazotto, Daniel Feitosa, Paris Avgeriou, and Elisa Yumi Nakagawa\. 
+Technical debt management automation: State of the art and future perspectives\.
+*Information and Software Technology*, 167:107375. 2024\.
+[doi:10.1016/j.infsof.2023.107375](https://doi.org/10.1016/j.infsof.2023.107375)
+* Nikolaos Nikolaidis, Nikolaos Mittas, Apostolos Ampatzoglou, Daniel Feitosa, and Alexander Chatzigeorgiou\.
+A metrics-based approach for selecting among various refactoring candidates\.
+*Empirical Software Engineering*, 29\(1\):25, 2024.
+[doi:10.1007/s10664-023-10412-w](https://doi.org/10.1007/s10664-023-10412-w)
+* Nikolaos Nikolaidis, Elvira-Maria Arvanitou, Christina Volioti, Theodore Maikantis, Apostolos Ampatzoglou, Daniel Feitosa, Alexander Chatzigeorgiou, and Phillipe Krief\.
+Eclipse Open SmartCLIDE: An end-to-end framework for facilitating service reuse in cloud development\.
+*Journal of Systems and Software*, 207:111877\. 2024\.
+[doi:10.1016/j.jss.2023.111877](https://doi.org/10.1016/j.jss.2023.111877)
+* Jie Tan, Daniel Feitosa, and Paris Avgeriou\.
+The lifecycle of Technical Debt that manifests in both source code and issue trackers\.
+*Information and Software Technology*, 159:107216, 2023\.
+[doi:10.1016/j.infsof.2023.107216](https://doi.org/10.1016/j.infsof.2023.107216)
+* Tim Yarally, Luís Cruz, Daniel Feitosa, June Sallou and Arie van Deursen\.
+Batching for Green AI - An Exploratory Study on Inference\.
+In *49th Euromicro Conference Series on Software Engineering and Advanced Applications \(SEAA '23\)*\. 2023\.
+[arXiv:10.48550/arXiv.2307.11434](https://doi.org/10.48550/arXiv.2307.11434)
+* Tim Yarally, Luís Cruz, Daniel Feitosa, June Sallou, and Arie van Deursen\.
+Uncovering Energy-Efficient Practices in Deep Learning Training: Preliminary Steps Towards Green AI\.
+In *Proceedings of the 2nd International Conference on AI Engineering – Software Engineering for AI \(CAIN '23\)*. IEEE, 2023\.
+\(distinguished paper award\)
+[doi:10.1109/cain58948.2023.00012](https://doi.org/10.1109/cain58948.2023.00012)
+* Chenxing Zhong, He Zhang, Chao Li, Huang Huang, and Daniel Feitosa\.
+On measuring coupling between microservices\.
+*Journal of Systems and Software*, 200:111670, 2023.
+[doi:10.1016/j.jss.2023.111670](https://doi.org/10.1016/j.jss.2023.111670)
+* Eko Rahmadian, Daniel Feitosa, and Yulia Virantina\.
+Digital twins, big data governance, and sustainable tourism\.
+*Ethics and Information Technology*, 25\(4\), 2023\.
+[doi:10.1007/s10676-023-09730-w](https://doi.org/10.1007/s10676-023-09730-w)
+* Eko Rahmadian, Daniel Feitosa, and Andrej Zwitter\.
+Governing Digital Twin technology for smart and sustainable tourism: a case study in applying a documentation framework for architecture decisions\.
+In *Handbook on the Politics and Governance of Big Data and Artificial Intelligence*, pp. 105–137, 2023.
+[doi:10.4337/9781800887374.00014](https://doi.org/10.4337/9781800887374.00014)
 * Zakieh Alizadehsani, Daniel Feitosa, Theodoros Maikantis, Apostolos Ampatzoglou, Alexander Chatzigeorgiou, David Berrocal, Alfonso González Briones, Juan M. Corchado, Marcio Mateus, and Johannes Groenewold\.
 Service Classification through Machine Learning: Aiding in the Efficient Identification of Reusable Assets in Cloud Application Development\.
 In *Proceedings of the 48th Euromicro Conference on Software Engineering and Advanced Applications \(SEAA '22\)*, 247–254\. 2022\.
+[doi:10.1109/SEAA56994.2022.00046](https://doi.org/10.1109/SEAA56994.2022.00046)
 * Jie Tan, Daniel Feitosa, and Paris Avgeriou\.
 Does it matter who pays back Technical Debt? An empirical study of self-fixed TD\.
 *Information and Software Technology*, 143\(15\):106738, 2022\.
