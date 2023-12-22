@@ -31,6 +31,9 @@ Work experience
 Service & Engagement
 ------
 Served (or serving) as:
+* Board support for the Dutch National Association for Software Engineering (VERSEN).
+* Board support for the Steering Committee of European Conference on Software Architecture (ECSA).
+* Co-Organizer of the 6th International Software Architecture PhD School (ISAPS 2024)
 * Co-Chair of the track Software Engineering and Debt Metaphors (SEaDeM) of the 49th Euromicro Conference on Software Engineering and Advanced Applications (SEAA 2023)
 * Co-Organizer of the 5th International Software Architecture PhD School (ISAPS 2023)
 * Co-Chair of the track Software Engineering and Debt Metaphors (SEaDeM) of the 48th Euromicro Conference on Software Engineering and Advanced Applications (SEAA 2022)
@@ -40,10 +43,12 @@ Served (or serving) as:
 * Chair of the J1st Track of the 46th Euromicro Conference on Software Engineering and Advanced Applications (SEAA 2020)
 
 Reviewer for:
+* Empirical Software Engineering (EMSE)
 * IEEE Access
 * IEEE Computer
 * IEEE Software
 * IEEE Transactions on Software Engineering (TSE)
+* IEEE Transactions on Software Engineering and Methodology (TOSEM)
 * IET Software
 * Information and Software Technology (IST)
 * International Journal of Network Management (NEM)
@@ -57,7 +62,10 @@ PC member of current or previous editions of:
 * ACM/SIGAPP Symposium on Applied Computing (SAC)
 * Euromicro Conference on Software Engineering and Advanced Applications (SEAA)
 * European Conference on Software Architecture (ECSA)
+* IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)
 * IEEE International Conference on Software Architecture (ICSA)
+* International Conference on Mining Software Repositories (MSR)
+* International Conference no Technical Debt (TechDebt)
 * SBC Brazilian Symposium on Software Engineering (SBES)
 * SBC Brazilian Symposium on Computing Applied to Health (SBCAS)
 * Workshop on Machine Learning Techniques for Software Quality Evaluation (MaLTeSQuE)
