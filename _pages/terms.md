@@ -13,7 +13,7 @@ This site is static, hosted on GitHub Pages, with no backend server of my own. I
 
 ### rclone-proxmox
 
-**rclone-proxmox** is a personal OAuth application (registered under this domain) that I use to back up my own Google Drive accounts to my personal server using [rclone](https://rclone.org). This application:
+[**rclone-proxmox**](/rclone-proxmox/) is a personal OAuth application (registered under this domain) that I use to back up my own Google Drive accounts to my personal server using [rclone](https://rclone.org). This application:
 
 * Accesses only the Google account data belonging to the account holder who explicitly authorizes it.
 * Is not distributed to, or used by, any third party — it is a private automation tool for personal backups.
