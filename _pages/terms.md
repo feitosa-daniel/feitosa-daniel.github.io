@@ -37,3 +37,12 @@ If you wish to disable cookies, you may do so through your web browser options. 
 #### Google Analytics
 
 Google Analytics is a web analytics tool I use to help understand how visitors engage with this website. It reports website trends using cookies and web beacons without identifying individual visitors. You can read [Google Analytics Privacy Policy](http://www.google.com/analytics/learn/privacy.html).
+
+### Google API / Personal Automation Tool
+
+I use a personal OAuth application (registered under this domain) to back up my own Google Drive accounts to my personal server using [rclone](https://rclone.org). This application:
+
+* Accesses only the Google account data belonging to the account holder who explicitly authorizes it.
+* Is not distributed to, or used by, any third party — it is a private automation tool for personal backups.
+* Does not share, sell, or transmit any accessed data to any service other than the account holder's own storage.
+* Access can be revoked at any time via [Google Account permissions](https://myaccount.google.com/permissions).
