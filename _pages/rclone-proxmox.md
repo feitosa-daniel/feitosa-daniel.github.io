@@ -16,7 +16,7 @@ title: "rclone-proxmox"
 
 ### Data access and privacy
 
-Full details on what data this application accesses and how it's handled are in the [Privacy Policy](/terms/).
+Full details on what data this application accesses and how it's handled are in the [Privacy Policy](/rclone-proxmox/terms/).
 
 ### Revoking access
 
