@@ -1,0 +1,82 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHeader from '../components/PageHeader.astro';
+import { cv } from '../lib/cv';
+
+const phd = cv.supervision.phd as any[];
+const current = phd.filter((s) => String(s.period ?? '').includes('present'));
+const defended = phd.filter((s) => !String(s.period ?? '').includes('present'));
+
+const endYear = (s: any) => {
+  const m = String(s.period ?? '').match(/(\d{4})/g);
+  return m ? Number(m[m.length - 1]) : 0;
+};
+
+// Supervision is shown as THEMES AND TOPICS, not as a list of student project titles.
+// The topics in cv.yaml (`research_themes[].supervision_topics`) are a thematic analysis of
+// what has actually been supervised in recent years — refreshed deliberately, not derived at
+// build time. Raw thesis titles were tried and dropped: they do not read as a coherent
+// description of the work.
+const msc = cv.supervision.msc as any[];
+const bsc = cv.supervision.bsc as any[];
+const since = 2022;
+const recent = [...msc, ...bsc].filter((s: any) => endYear(s) >= since).length;
+const topicGroups = cv.research_themes.filter((t) => t.supervision_topics.length > 0);
+---
+<Base title="Supervision" description={`PhD, MSc and BSc supervision by ${cv.name}, and the kind of thesis work he takes on.`}>
+  <PageHeader
+    eyebrow="Supervision"
+    title="Supervision"
+    intro="I do not keep a published list of available topics. What I can supervise well is best read from the themes on the front page and from the recent theses below — if something there overlaps with an idea of yours, write to me."
+  />
+
+  <div class="mx-auto max-w-[1180px] px-6 pb-16 md:px-12">
+    <section class="pb-12">
+      <h2 class="eyebrow border-b border-[--color-rule] pb-4">PhD candidates</h2>
+      <ul>
+        {[...current, ...defended].map((s) => (
+          <li class="flex flex-col gap-1 border-b border-[--color-rule] py-4 md:flex-row md:items-baseline md:gap-6">
+            <span class="font-sans text-sm text-muted md:w-44 md:shrink-0">{s.period}</span>
+            <span class="grow">
+              <span class="font-sans text-base font-semibold">{s.name}</span>
+              <span class="block pt-0.5 text-[17px] font-light leading-snug text-body">{s.topic}</span>
+            </span>
+            <span class="font-sans text-sm text-muted md:w-40 md:shrink-0 md:text-right">
+              {s.status ?? 'In progress'}{s.role ? ` · ${s.role}` : ''}
+            </span>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <section class="pb-12">
+      <h2 class="eyebrow border-b border-[--color-rule] pb-4">What I supervise</h2>
+      <p class="max-w-[760px] py-5 text-[17px] font-light leading-relaxed text-body">
+        {recent} bachelor's and master's projects since {since}. Rather than a list of past
+        titles, these are the topics that work has actually clustered around — and the kind of
+        project I can supervise well.
+      </p>
+
+      {topicGroups.map((t) => (
+        <div class="border-t border-[--color-rule] py-5 md:flex md:gap-8">
+          <p class="rowlabel pb-3 uppercase md:w-56 md:shrink-0 md:pb-0 md:pt-1">{t.title}</p>
+          <ul class="flex grow flex-col gap-2.5">
+            {t.supervision_topics.map((topic) => (
+              <li class="text-[17px] font-light leading-snug text-body">{topic}</li>
+            ))}
+          </ul>
+        </div>
+      ))}
+      <div class="border-t border-[--color-rule]"></div>
+    </section>
+
+    <section class="rounded border border-[--color-rule] bg-card p-7">
+      <p class="max-w-[760px] text-[17px] font-light leading-relaxed text-body">
+        {msc.length} master's and {bsc.length} bachelor projects in total, including theses,
+        internships and Honours College work. Bachelor projects are the more varied of the two —
+        often a company placement or a student's own idea.
+        <a href={`mailto:${cv.email}`}>Email me</a> if you are looking for a supervisor.
+      </p>
+    </section>
+  </div>
+</Base>

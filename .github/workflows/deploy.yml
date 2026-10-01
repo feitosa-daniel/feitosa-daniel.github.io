@@ -1,0 +1,39 @@
+# Build the Astro site and deploy it to GitHub Pages.
+#
+# This repository IS the published site: https://feitosa-daniel.github.io
+# Pages must be set to "GitHub Actions" as its source (build_type: workflow), not the legacy
+# branch build — Astro output is not Jekyll. public/.nojekyll keeps dist/_astro/ intact.
+name: Deploy site
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: withastro/action@v3
+        with:
+          node-version: 22
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

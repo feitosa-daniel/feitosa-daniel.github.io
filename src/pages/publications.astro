@@ -1,0 +1,121 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHeader from '../components/PageHeader.astro';
+import { cv, publications, stats } from '../lib/cv';
+
+const themes = cv.research_themes;
+const themeTitle = (id: string) => themes.find((t) => t.id === id)?.title ?? id;
+const years = [...new Set(publications.map((p) => p.yearNum))].sort((a, b) => b - a);
+const kindLabel = { journal: 'Journal', conference: 'Conference', chapter: 'Chapter' } as const;
+---
+<Base title="Publications" description={`All ${stats.publications} publications by ${cv.name}, filterable by research theme and type.`}>
+  <PageHeader
+    eyebrow="Publications"
+    title={`${stats.publications} publications`}
+    intro={`${stats.journals} journal articles, ${stats.conferences} conference papers and ${publications.length - stats.journals - stats.conferences} book chapters. The canonical, always-current lists live on Google Scholar, DBLP and ORCID.`}
+  />
+
+  <div class="mx-auto max-w-[1180px] px-6 md:px-12">
+    <div class="flex flex-col gap-4 border-y border-[--color-rule] py-5 md:flex-row md:items-center md:gap-8">
+      <div class="flex flex-wrap items-center gap-2">
+        <span class="rowlabel uppercase">Theme</span>
+        <button type="button" data-theme="" class="filter is-on">All</button>
+        {themes.map((t) => <button type="button" data-theme={t.id} class="filter">{t.title}</button>)}
+      </div>
+      <div class="flex flex-wrap items-center gap-2">
+        <span class="rowlabel uppercase">Type</span>
+        <button type="button" data-kind="" class="filter is-on">All</button>
+        {Object.entries(kindLabel).map(([k, l]) => <button type="button" data-kind={k} class="filter">{l}</button>)}
+      </div>
+      <p class="font-sans text-sm text-muted md:ml-auto"><output id="pubcount">{publications.length}</output> shown</p>
+    </div>
+
+    <div class="pb-16">
+      {years.map((y) => (
+        <section data-year={y}>
+          <h2 class="sticky top-0 z-10 bg-white/95 py-4 font-sans text-sm font-semibold tracking-widest text-muted backdrop-blur">{y}</h2>
+          <ul>
+            {publications.filter((p) => p.yearNum === y).map((p) => (
+              <li class="pub border-t border-[--color-rule] py-5"
+                  data-themes={p.themeIds.join(' ')} data-kind={p.kind}>
+                <h3 class="text-lg leading-snug md:text-xl">
+                  {p.doi ? <a href={`https://doi.org/${p.doi}`} target="_blank" rel="noopener">{p.title}</a> : p.title}
+                </h3>
+                <p class="pt-1.5 font-sans text-sm text-body">{p.authors}</p>
+                <p class="pt-1 font-sans text-sm text-muted">
+                  <span>{p.venue}</span>
+                  {p.inpress && <span class="ml-1">(in press)</span>}
+                  {p.award && <span class="ml-2 font-semibold text-award">{p.award}</span>}
+                  {p.themeIds.map((id) => (
+                    <span class="ml-2 rounded-sm border border-[--color-rule] px-1.5 py-0.5 text-xs">{themeTitle(id)}</span>
+                  ))}
+                </p>
+                {p.abstract && (
+                  <details class="pt-2">
+                    <summary class="cursor-pointer font-sans text-sm text-accent">Abstract</summary>
+                    <p class="max-w-[820px] pt-2 text-[15px] font-light leading-relaxed text-body">{p.abstract}</p>
+                  </details>
+                )}
+              </li>
+            ))}
+          </ul>
+        </section>
+      ))}
+    </div>
+  </div>
+
+  <style>
+    .filter {
+      font-family: var(--font-sans); font-size: 13px; padding: 4px 10px;
+      border: 1px solid var(--color-rule); border-radius: 3px; background: #fff; cursor: pointer;
+    }
+    .filter:hover { border-color: var(--color-accent); }
+    .filter.is-on { background: var(--color-accent); border-color: var(--color-accent); color: #fff; }
+    .pub[hidden] { display: none !important; }
+  </style>
+
+  <script>
+    const state = { theme: '', kind: '' };
+    const count = document.getElementById('pubcount')!;
+
+    function apply() {
+      let shown = 0;
+      document.querySelectorAll<HTMLElement>('.pub').forEach((el) => {
+        const themes = (el.dataset.themes ?? '').split(' ').filter(Boolean);
+        const ok =
+          (state.theme === '' || themes.includes(state.theme)) &&
+          (state.kind === '' || el.dataset.kind === state.kind);
+        el.hidden = !ok;
+        if (ok) shown++;
+      });
+      document.querySelectorAll<HTMLElement>('section[data-year]').forEach((s) => {
+        s.hidden = !s.querySelector('.pub:not([hidden])');
+      });
+      count.textContent = String(shown);
+    }
+
+    function wire(attr: 'theme' | 'kind') {
+      const sel = `button[data-${attr}]`;
+      document.querySelectorAll<HTMLButtonElement>(sel).forEach((b) => {
+        b.addEventListener('click', () => {
+          state[attr] = b.dataset[attr] ?? '';
+          document.querySelectorAll(sel).forEach((o) => o.classList.remove('is-on'));
+          b.classList.add('is-on');
+          const url = new URL(location.href);
+          state[attr] ? url.searchParams.set(attr, state[attr]) : url.searchParams.delete(attr);
+          history.replaceState(null, '', url);
+          apply();
+        });
+      });
+    }
+    wire('theme');
+    wire('kind');
+
+    // Deep links from the theme cards: /publications/?theme=platforms
+    const params = new URLSearchParams(location.search);
+    for (const attr of ['theme', 'kind'] as const) {
+      const v = params.get(attr);
+      if (v) document.querySelector<HTMLButtonElement>(`button[data-${attr}="${v}"]`)?.click();
+    }
+  </script>
+</Base>

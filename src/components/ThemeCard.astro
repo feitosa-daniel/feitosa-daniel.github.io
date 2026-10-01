@@ -1,0 +1,45 @@
+---
+import { url } from '../lib/url';
+import type { ThemeView } from '../lib/cv';
+interface Props { theme: ThemeView; }
+const { theme } = Astro.props;
+
+const rows = [
+  ...theme.recent.map((p, i) => ({ label: i === 0 ? 'Recent' : '', pub: p })),
+  ...theme.awarded.map((p) => ({ label: 'Award', pub: p })),
+];
+---
+<article class="rounded border border-[--color-rule] bg-card p-7 md:p-9">
+  <div class="flex flex-col gap-8 lg:flex-row lg:gap-12">
+    <div class="lg:w-[380px] lg:shrink-0">
+      <h2 class="text-2xl font-semibold tracking-tight md:text-[28px]">
+        <a href={url(`/publications/?theme=${theme.id}`)} class="text-ink no-underline hover:underline">{theme.title}</a>
+      </h2>
+      <p class="pt-3 text-[17px] font-light leading-relaxed text-body md:text-lg">{theme.blurb}</p>
+    </div>
+
+    <div class="flex grow flex-col gap-4">
+      {rows.map(({ label, pub: p }) => (
+        <div class="flex gap-4">
+          <span class="rowlabel w-16 shrink-0 pt-1 uppercase">{label}</span>
+          <span class="text-base leading-snug">
+            {p.doi ? <a href={`https://doi.org/${p.doi}`} target="_blank" rel="noopener">{p.title}</a> : <span>{p.title}</span>}
+            {p.award
+              ? <span class="ml-1 font-sans text-sm font-semibold text-award">{p.award}, {p.venueShort ?? p.venue} {p.yearNum}</span>
+              : <span class="ml-1 font-sans text-sm text-muted">{p.venueShort ?? p.venue} {p.yearNum}</span>}
+          </span>
+        </div>
+      ))}
+
+      <div class="flex gap-4 pt-1">
+        <span class="rowlabel w-16 shrink-0 pt-1 uppercase">All</span>
+        <span class="font-sans text-[15px] leading-snug">
+          <a href={url(`/publications/?theme=${theme.id}`)}>{theme.count} publications</a>
+          {theme.mscCount > 0 && (
+            <span class="text-muted"> · {theme.mscCount} MSc theses supervised</span>
+          )}
+        </span>
+      </div>
+    </div>
+  </div>
+</article>

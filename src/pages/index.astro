@@ -1,0 +1,105 @@
+---
+import { url } from '../lib/url';
+import Base from '../layouts/Base.astro';
+import ThemeCard from '../components/ThemeCard.astro';
+import { Image } from 'astro:assets';
+import { cv, themeViews, stats, tagline, fundingSummary, communityHighlights, distinctionGroups } from '../lib/cv';
+
+// The portrait filename comes from cv.yaml (site.photo); the file lives in src/assets so
+// Astro optimizes it (the source is a 3.1 MB JPEG — served raw it would dominate page weight).
+const assets = import.meta.glob<{ default: ImageMetadata }>('../assets/*.{jpg,jpeg,png,webp,avif}', { eager: true });
+const photoName = (cv.site as any)?.photo as string | undefined;
+const portrait = photoName ? assets[`../assets/${photoName}`]?.default : undefined;
+
+const themes = themeViews();
+const site = cv.site as any;
+
+// Eyebrow is derived from the themes' own leading keywords, so it follows cv.yaml.
+const eyebrow = cv.research_themes
+  .map((t) => t.keywords[0])
+  .filter(Boolean)
+  .map((k) => k!.charAt(0).toUpperCase() + k!.slice(1))
+  .join(' · ');
+
+// Recognition: grouped by `kind` from cv.yaml, so Best Paper and Distinguished Paper fold
+// into one line. Add a kind here to surface it; nothing else needs changing.
+const awards = distinctionGroups(['paper-award', 'reviewer-award']);
+
+const role = cv.employment[0];
+const funding = fundingSummary();
+const community = communityHighlights();
+---
+<Base>
+  <section class="mx-auto max-w-[1180px] px-6 pb-14 pt-16 md:px-12">
+    <div class="flex flex-col-reverse gap-10 md:flex-row md:items-start md:gap-16">
+      <div class="grow">
+        <p class="eyebrow text-accent">{eyebrow}</p>
+        <h1 class="max-w-[740px] pt-5 text-[40px] font-semibold leading-[1.1] tracking-tight md:text-[58px]">{tagline}</h1>
+        <p class="max-w-[660px] pt-6 text-lg font-light leading-relaxed text-body md:text-xl">{site?.lede}</p>
+      </div>
+
+      <div class="flex shrink-0 flex-col items-start md:w-[300px]">
+        <div class="w-[272px] md:w-[300px]">
+          {portrait
+            ? <Image src={portrait} alt={`Portrait of ${cv.name}`} width={300} densities={[1, 2]}
+                     class="portrait-fade aspect-4/5 w-full object-cover object-top" />
+            : <div class="flex aspect-4/5 w-full items-center justify-center rounded border border-[#D8E0DA] bg-[#EEF2EF] font-sans text-[11px] uppercase tracking-widest text-[#7C8680]">Portrait</div>}
+        </div>
+        <p class="pt-3 font-sans text-[27px] font-bold leading-tight tracking-tight">{cv.name}</p>
+        <p class="pt-2 font-sans text-[13px] font-medium leading-relaxed text-[#6E7370]">
+          {role.role}<br />{role.institution.replace(/^.*?,\s*/, '')}
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="research" class="mx-auto max-w-[1180px] px-6 md:px-12">
+    <h2 class="eyebrow pb-6">What I work on</h2>
+    <div class="flex flex-col gap-5">
+      {themes.map((t) => <ThemeCard theme={t} />)}
+    </div>
+  </section>
+
+  <section class="mx-auto grid max-w-[1180px] gap-12 px-6 pt-14 md:grid-cols-[1fr_440px] md:px-12">
+    <div>
+      <h2 class="eyebrow pb-5">Recognition</h2>
+      <ul class="flex flex-col gap-3 text-[17px] leading-snug text-body">
+        {awards.map((g) => (
+          <li>
+            <span class="font-sans font-semibold text-ink">{g.label}</span>
+            <span> — {g.venues.join(', ')}</span>
+          </li>
+        ))}
+        <li>
+          <span class="font-sans font-semibold text-ink">{funding.count} grants</span>
+          <span> — {funding.amount} awarded from {funding.funders}</span>
+        </li>
+        <li>
+          <span class="font-sans font-semibold text-ink">{stats.publications} publications</span>
+          <span> — <a href={url('/publications/')}>browse them all</a>, or the canonical lists on{' '}
+            <a href={cv.profiles.find((p) => p.network === 'Google Scholar')?.url} target="_blank" rel="noopener">Scholar</a>,{' '}
+            <a href={cv.profiles.find((p) => p.network === 'DBLP')?.url} target="_blank" rel="noopener">DBLP</a> and{' '}
+            <a href={cv.profiles.find((p) => p.network === 'ORCID')?.url} target="_blank" rel="noopener">ORCID</a>.
+          </span>
+        </li>
+      </ul>
+    </div>
+
+    <div>
+      <h2 class="eyebrow pb-5">In the community</h2>
+      <ul class="flex flex-col gap-3 text-[17px] leading-snug text-body">
+        {community.editorial && (
+          <li><span class="font-sans font-semibold text-ink">{community.editorial.role}</span>, {community.editorial.organization}</li>
+        )}
+        {community.chairing && (
+          <li><span class="font-sans font-semibold text-ink">{community.chairing.role}</span>, {community.chairingLabel}</li>
+        )}
+      </ul>
+      <p class="pt-4 font-sans text-[15px] text-muted">
+        {community.organizingRoles} organizing and chairing roles · reviewed for {community.venues} venues
+      </p>
+      <p class="pt-3 font-sans text-[15px]"><a href={url('/service/')}>All service and review activity →</a></p>
+    </div>
+  </section>
+
+</Base>

@@ -1,0 +1,9 @@
+---
+import { url } from '../lib/url';
+import Base from '../layouts/Base.astro';
+import PageHeader from '../components/PageHeader.astro';
+---
+<Base title="Page not found">
+  <PageHeader title="Page not found" intro="That page does not exist. Try the research themes on the front page, or the full publication list." />
+  <div class="mx-auto max-w-[1180px] px-6 pb-24 font-sans md:px-12"><a href={url('/')}>← Back to the front page</a></div>
+</Base>

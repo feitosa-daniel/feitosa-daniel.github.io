@@ -1,0 +1,33 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHeader from '../components/PageHeader.astro';
+import { cv } from '../lib/cv';
+const isCurrent = (c: any) => String(c.period ?? '').includes('present');
+const lecturing = cv.teaching.lecturing as any[];
+const group = (list: any[]) => ({ current: list.filter(isCurrent), past: list.filter((c) => !isCurrent(c)) });
+const lect = group(lecturing);
+---
+<Base title="Teaching" description={`Courses taught by ${cv.name} at the University of Groningen.`}>
+  <PageHeader eyebrow="Teaching" title="Teaching"
+    intro={`${lecturing.length} courses as lecturer or coordinator at the University of Groningen.`} />
+  <div class="mx-auto max-w-[1180px] px-6 pb-16 md:px-12">
+    {[['Currently teaching', lect.current], ['Previously', lect.past]].map(([heading, list]: any) => (
+      list.length > 0 && (
+        <section class="pb-10">
+          <h2 class="eyebrow border-b border-[--color-rule] pb-4">{heading}</h2>
+          <ul>
+            {list.map((c: any) => (
+              <li class="flex flex-col gap-1 border-b border-[--color-rule] py-4 md:flex-row md:items-baseline md:gap-6">
+                <span class="font-sans text-sm text-muted md:w-44 md:shrink-0">{c.period}</span>
+                <span class="grow text-lg leading-snug">{c.course}</span>
+                <span class="font-sans text-sm text-body md:w-64 md:shrink-0 md:text-right">
+                  {c.level}{c.role ? ` · ${c.role}` : ''}
+                </span>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )
+    ))}
+  </div>
+</Base>

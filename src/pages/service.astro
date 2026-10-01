@@ -1,0 +1,102 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHeader from '../components/PageHeader.astro';
+import { cv, venueAcronym, venueWithYear, editionYears } from '../lib/cv';
+const s = cv.services as any;
+const reviews = s.reviews ?? {};
+// Reviewer lists are long: compress, do not wall. Rendered as compact tags.
+const reviewGroups = [
+  ['Journals', reviews.journals ?? []],
+  ['Conferences', reviews.conferences ?? []],
+  ['Funding bodies', reviews.funding ?? []],
+] as const;
+const reviewTotal = reviewGroups.reduce((n, [, l]) => n + (l as any[]).length, 0);
+
+const reviewerAwards = (cv.distinctions as any[]).filter((d) => /reviewer/i.test(d.award));
+---
+<Base title="Service" description={`Academic and professional service, editorial roles and review activity of ${cv.name}.`}>
+  <PageHeader eyebrow="Service" title="Service to the community"
+    intro={`Editorial and organizing roles, committee work, and review activity across ${reviewTotal} venues.`} />
+
+  <div class="mx-auto max-w-[1180px] px-6 pb-16 md:px-12">
+    <section class="pb-10">
+      <h2 class="eyebrow border-b border-[--color-rule] pb-4">Standing roles</h2>
+      <ul>
+        {(cv.memberships as any[]).map((m) => (
+          <li class="flex flex-col gap-1 border-b border-[--color-rule] py-4 md:flex-row md:items-baseline md:gap-6">
+            <span class="font-sans text-sm text-muted md:w-44 md:shrink-0">{m.period}</span>
+            <span class="grow text-[17px] leading-snug">
+              {m.role && <span class="font-sans font-semibold">{m.role}, </span>}{m.organization}
+              {m.division && <span class="block pt-0.5 font-sans text-sm text-muted">{m.division}</span>}
+            </span>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    {[['Professional service', s.professional ?? []], ['Academic service', s.academic ?? []]].map(([heading, list]: any) => (
+      list.length > 0 && (
+        <section class="pb-10">
+          <h2 class="eyebrow border-b border-[--color-rule] pb-4">{heading}</h2>
+          <ul>
+            {list.map((r: any) => (
+              <li class="flex flex-col gap-1 border-b border-[--color-rule] py-4 md:flex-row md:items-baseline md:gap-6">
+                <span class="font-sans text-sm text-muted md:w-44 md:shrink-0">{r.period ?? editionYears(String(r.event ?? ''))}</span>
+                <span class="grow text-[17px] leading-snug">
+                  <span class="font-sans font-semibold">{r.role}</span>
+                  {(r.event || r.institution) && <span>, {r.event ?? r.institution}</span>}
+                </span>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )
+    ))}
+
+    <section class="pb-10">
+      <h2 class="eyebrow border-b border-[--color-rule] pb-4">Reviewing</h2>
+
+      {reviewerAwards.length > 0 && (
+        <p class="border-b border-[--color-rule] py-5 text-[17px] leading-relaxed text-body">
+          <span class="font-sans font-semibold text-ink">{reviewerAwards.length} Distinguished Reviewer Awards</span>
+          <span> — {reviewerAwards.map((d) => venueWithYear(String(d.venue), d.year)).join(', ')}.</span>
+        </p>
+      )}
+
+      {reviewGroups.map(([heading, list]) => (
+        (list as any[]).length > 0 && (
+          <div class="border-b border-[--color-rule] py-5 md:flex md:gap-8">
+            <p class="rowlabel pb-2 uppercase md:w-32 md:shrink-0 md:pb-0 md:pt-1">
+              {heading} <span class="text-muted">({(list as any[]).length})</span>
+            </p>
+            <p class="font-sans text-[15px] leading-relaxed text-body">
+              {(list as any[]).map((v, i) => (
+                <>
+                  {i > 0 && <span class="text-muted"> · </span>}
+                  <span title={String(v)}>{venueAcronym(String(v))}</span>
+                </>
+              ))}
+            </p>
+          </div>
+        )
+      ))}
+
+      <details class="py-4">
+        <summary class="cursor-pointer font-sans text-sm text-accent">Full venue names and years</summary>
+        <div class="grid gap-6 pt-4 md:grid-cols-2">
+          {reviewGroups.map(([heading, list]) => (
+            (list as any[]).length > 0 && (
+              <div>
+                <p class="rowlabel pb-2 uppercase">{heading}</p>
+                <ul class="flex flex-col gap-1 text-[15px] font-light leading-snug text-body">
+                  {(list as any[]).map((v) => <li>{v}</li>)}
+                </ul>
+              </div>
+            )
+          ))}
+        </div>
+      </details>
+    </section>
+
+  </div>
+</Base>
