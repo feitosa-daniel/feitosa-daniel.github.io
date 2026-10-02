@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "scripts": {
     "sync-cv": "node scripts/sync-cv.mjs",
-    "dev": "astro dev",
-    "build": "astro build",
+    "dev": "npm run sync-cv && astro dev",
+    "build": "npm run sync-cv && astro build",
+    "deploy": "node scripts/deploy.mjs",
     "preview": "astro preview",
     "astro": "astro"
   },

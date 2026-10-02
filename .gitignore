@@ -4,5 +4,7 @@ dist/
 .DS_Store
 *.log
 
-# cv.yaml is private: never commit it (copied in by npm run sync-cv)
+# Copied in by npm run sync-cv. cv.yaml is private: never commit it. The PDF is published
+# with the built site (npm run deploy), so it doesn't need to live in source history.
 src/data/cv.yaml
+public/Feitosa-CV-Public.pdf

@@ -7,14 +7,19 @@ the same `cv.yaml` that produces the LaTeX CV PDF. No page hardcodes content.
 
 ## Running it
 
+The CV data is private and is not in this repository, so building needs a local copy of the
+canonical `cv.yaml`, expected at `../cv/cv.yaml`.
+
 ```bash
 npm install
-npm run sync-cv    # pull cv.yaml and the CV PDF from the CV repository
 npm run dev        # http://localhost:4321
 npm run build      # static output in dist/
+npm run deploy     # build and publish (see Deployment)
 ```
 
-`CV_SOURCE=/path/to/cv.yaml npm run sync-cv` overrides where the CV is read from.
+`dev` and `build` run `npm run sync-cv` first, which copies `cv.yaml` and the public CV PDF
+into this checkout. Both copies are gitignored. `CV_SOURCE=/path/to/cv.yaml` overrides where
+the CV is read from.
 
 ## Stack
 
@@ -26,14 +31,17 @@ npm run build      # static output in dist/
 
 ## How content flows
 
-`cv.yaml` lives in a separate repository and is the source of truth. `npm run sync-cv` copies
-it into `src/data/cv.yaml`, which is committed so CI can build without that repository present.
+`cv.yaml` is the source of truth. It lives in a separate, private repository and is never
+committed here. `npm run sync-cv` copies it into `src/data/cv.yaml` (gitignored), and
 `src/lib/cv.ts` is the only module that reads it and exposes typed accessors to the pages.
 
 ## Deployment
 
-Pushing to `main` triggers `.github/workflows/deploy.yml`, which builds the site and publishes
-it to GitHub Pages. The repository's Pages source must be **GitHub Actions**, not a branch.
+The site is built locally and only the built output is published. `npm run deploy` syncs
+the CV, builds, checks `dist/` for data files and private references, and commits `dist/` to
+the **`gh-pages`** branch, which GitHub Pages serves (Pages source: *Deploy from a branch*,
+`gh-pages`, `/`). Pushing to `main` does not deploy. `npm run deploy -- --dry` does everything
+except the push.
 
 ## History
 
